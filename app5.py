@@ -11,16 +11,18 @@ mongo = PyMongo(app)
 class User(Resource):
     def get(self, id=None):
         if id:
-            # user = mongo.db.users.find_one({'id': id})
-            user = mongo.db.users.find_one({'id': ObjectId(id)})
-            if user:
-                return {'id': user['id'], 'name': user['name'], 'email': user['email'], 'password': user['password']}
-            else:
-                return {'error': 'User not found'}, 404
+            try:
+                user = mongo.db.users.find_one({'_id': ObjectId(id)})
+                if user:
+                    return {'id': str(user['_id']), 'name': user['name'], 'email': user['email'], 'password': user['password']}
+                else:
+                    return {'error': 'User not found'}, 404
+            except:
+                return {'error': 'Invalid id'}, 400
         else:
             users = []
             for user in mongo.db.users.find():
-                users.append({'id': user['id'], 'name': user['name'], 'email': user['email'], 'password': user['password']})
+                users.append({'id': str(user['_id']), 'name': user['name'], 'email': user['email'], 'password': user['password']})
             return users
 
     def post(self):
@@ -31,11 +33,11 @@ class User(Resource):
         parser.add_argument('password', required=True, help='password cannot be blank')
         args = parser.parse_args()
 
-        user = mongo.db.users.find_one({'id': args['id']})
+        user = mongo.db.users.find_one({'_id': ObjectId(args['id'])})
         if user:
             return {'error': 'User already exists'}, 409
 
-        mongo.db.users.insert_one({'id': args['id'], 'name': args['name'], 'email': args['email'], 'password': args['password']})
+        mongo.db.users.insert_one({'_id': ObjectId(args['id']), 'name': args['name'], 'email': args['email'], 'password': args['password']})
         return {'message': 'User created successfully'}, 201
 
     def put(self, id):
@@ -45,17 +47,17 @@ class User(Resource):
         parser.add_argument('password', required=True, help='password cannot be blank')
         args = parser.parse_args()
 
-        user = mongo.db.users.find_one({'id': id})
+        user = mongo.db.users.find_one({'_id': ObjectId(id)})
         if user:
-            mongo.db.users.update_one({'id': id}, {'$set': {'name': args['name'], 'email': args['email'], 'password': args['password']}})
+            mongo.db.users.update_one({'_id': ObjectId(id)}, {'$set': {'name': args['name'], 'email': args['email'], 'password': args['password']}})
             return {'message': 'User updated successfully'}, 200
         else:
             return {'error': 'User not found'}, 404
 
     def delete(self, id):
-        user = mongo.db.users.find_one({'id': id})
+        user = mongo.db.users.find_one({'_id': ObjectId(id)})
         if user:
-            mongo.db.users.delete_one({'id': id})
+            mongo.db.users.delete_one({'_id': ObjectId(id)})
             return {'message': 'User deleted successfully'}, 200
         else:
             return {'error': 'User not found'}, 404
