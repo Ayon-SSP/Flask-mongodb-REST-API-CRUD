@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD | MongoDB-Flask</title>
+    <!-- CSS BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+    <!-- JS BootStrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar " style="background-color: #b3ff00;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+            <img src="https://cdn-icons-png.flaticon.com/512/1437/1437121.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            Flask-MongoDB
+            </a>
+        </div>
+    </nav>
+    <br>
+
+
+    <!-- <form id="formData" action="">
+        <input type="text" id="id">
+        <input type="submit" value="Submit ✅">
+    </form>
+    <br>
+    <div id="result"></div> -->
+
+
+    <br>
+    <div class="container">
+        <a class="btn btn-info" data-bs-toggle="collapse" href="#retrieveForm" role="button" aria-expanded="false" aria-controls="retrieveForm">
+            GET
+        </a>
+        <br>
+        <div class="collapse" id="retrieveForm">
+            <br>
+            <form class="form-group" id="formData">
+                <label for="id">Enter Id </label>
+                <input type="text" name="name" id="id" class="form-control"><br>
+                <button class="btn btn-info" type="submit">Submit</button>
+            </form>
+        </div>
+        <br>
+        <ul class="list-group" id="result"></ul>
+        <hr>
+    </div>
+
+
+    <div class="container">
+        <a class="btn btn-info" data-bs-toggle="collapse" href="#postCollapse" role="button" aria-expanded="false" aria-controls="postCollapse">
+            Post
+        </a>
+        <br>
+        <div class="collapse" id="postCollapse">
+            <br>
+            <form class="form-group" id="postData">
+                <label for="id">Enter ID </label>
+                <input type="text" name="id" id="postId" class="form-control"><br>
+
+                <label for="name">Enter Name </label>
+                <input type="text" name="name" id="postName" class="form-control"><br>
+
+                <label for="email">Enter Email </label>
+                <input type="text" name="email" id="postEmail" class="form-control"><br>
+
+                <label for="password">Enter Password </label>
+                <input type="text" name="password" id="postPassword" class="form-control"><br>
+
+
+                <button class="btn btn-info" type="submit">Submit</button>
+            </form>
+        </div>
+        <br>
+        <div id="postResponse"></div>
+        <hr>
+    </div>
+
+
+    <div class="container">
+        <a class="btn btn-info" data-bs-toggle="collapse" href="#updateColaps" role="button" aria-expanded="false" aria-controls="updateColaps">
+            UPDATE
+        </a>
+        <br>
+        <div class="collapse" id="updateColaps">
+            <br>
+            <form class="form-group" id="updateData">
+                <label for="CurrUpdatedtId">CURR Enter ID </label>
+                <input type="text" name="CurrUpdatedtId" id="CurrUpdatedtId" class="form-control"><br>
+                <br>
+                <label for="updatedtId"><b>Fill the required fields to update : </b></label><br>
+                <br>
+                <label for="updatedtId">Enter ID </label>
+                <input type="text" name="updatedtId" id="updatedtId" class="form-control"><br>
+
+                <label for="updatedtName">Enter Name </label>
+                <input type="text" name="updatedtName" id="updatedtName" class="form-control"><br>
+
+                <label for="updatedtEmail">Enter Email </label>
+                <input type="text" name="updatedtEmail" id="updatedtEmail" class="form-control"><br>
+
+                <label for="updatedtPassword">Enter Password </label>
+                <input type="text" name="updatedtPassword" id="updatedtPassword" class="form-control"><br>
+
+                <label for="updatedtRePassword">ReEnter Password </label>
+                <input type="text" name="updatedtRePassword" id="updatedtRePassword" class="form-control"><br>
+
+                <button class="btn btn-info" type="submit">Submit</button>
+            </form>
+        </div>
+        <br>
+        <div id="postResponse"></div>
+        <hr>
+    </div>
+
+
+    <div class="container">
+        <a class="btn btn-info" data-bs-toggle="collapse" href="#DeleteById" role="button" aria-expanded="false" aria-controls="DeleteById">
+            DELETE
+        </a>
+        <br>
+        <div class="collapse" id="DeleteById">
+            <br>
+            <form class="form-group" id="delData">
+                <label for="id">Enter Id to Delete</label>
+                <input type="text" name="name" id="delId" class="form-control"><br>
+                <button class="btn btn-info" type="submit">Submit</button>
+            </form>
+        </div>
+        <br>
+        <ul class="list-group" id="DelRes"></ul>
+        <hr>
+    </div>
+
+
+    <div class="container">
+        <ul class="list-group" id="display"></ul>
+    </div>
+
+    <script src="./script.js" async defer></script>
+</body>
+</html>
+
+
