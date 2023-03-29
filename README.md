@@ -4,8 +4,8 @@
 
 > Clone repo
 ```bash
-git clone https://github.com/Ayon-SSP/Flask-mongodb-CRUD-REST-API
-cd Flask-mongodb-CRUD-REST-API
+git clone https://github.com/Ayon-SSP/Flask-mongodb-REST-API-CRUD
+cd Flask-mongodb-REST-API-CRUD
 ```
 
 > Install virtual env and activate
@@ -25,6 +25,7 @@ pythno3 app.py
 ```
 ```bash
 mongo
+use mydatabase
 ```
 > ⚠️ To Deactivate Virtual Env
 ```bash
